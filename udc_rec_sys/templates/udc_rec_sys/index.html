@@ -1,0 +1,27 @@
+{% extends 'udc_rec_sys/base.html'%}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" style="margin-top: 365px; margin-left: 25px">
+                    <h1 class="mt-5">{% trans 'indexHTML_description_title' %}</h1>
+                    <p>
+                        {% trans 'indexHTML_description' %}
+                    </p>
+                    <button id="start-purchase-btn" type="button" class="btn btn-lg">
+                        <a id="start-purchase-link" href="{% url 'udc_rec_sys:article_upload' %}">
+                            {% trans 'indexHTML_article_upload_button' %}
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

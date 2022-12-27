@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-20 16:52+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: udc_rec_sys/templates/udc_rec_sys/article_upload.html:16
+msgid "article_uploadHTML_title"
+msgstr "Upload article"
+
+#: udc_rec_sys/templates/udc_rec_sys/article_upload.html:23
+msgid "article_uploadHTML_select_article_label"
+msgstr "Select article"
+
+#: udc_rec_sys/templates/udc_rec_sys/article_upload.html:29
+msgid "article_uploadHTML_upload_button"
+msgstr "Upload"
+
+#: udc_rec_sys/templates/udc_rec_sys/article_upload_instruction.html:4
+msgid "article_upload_instructionHTML_title"
+msgstr "Instruction"
+
+#: udc_rec_sys/templates/udc_rec_sys/article_upload_instruction.html:6
+msgid "article_upload_instructionHTML_msg1"
+msgstr "1) Upload article in PDF format"
+
+#: udc_rec_sys/templates/udc_rec_sys/article_upload_instruction.html:9
+msgid "article_upload_instructionHTML_msg2"
+msgstr "2) After uploading the article, you will be redirected to the Personal Account page, where you can track the status of the article and get recommendations."
+
+#: udc_rec_sys/templates/udc_rec_sys/base.html:29
+msgid "baseHTML_navbar_header"
+msgstr "UDC Recommender"
+
+#: udc_rec_sys/templates/udc_rec_sys/base.html:38
+msgid "baseHTML_navbar_upload_article"
+msgstr "Upload"
+
+#: udc_rec_sys/templates/udc_rec_sys/base.html:46
+msgid "baseHTML_navbar_logout"
+msgstr "Logout"
+
+#: udc_rec_sys/templates/udc_rec_sys/base.html:50
+msgid "baseHTML_navbar_login"
+msgstr "Login"
+
+#: udc_rec_sys/templates/udc_rec_sys/index.html:14
+msgid "indexHTML_description_title"
+msgstr "About Us"
+
+#: udc_rec_sys/templates/udc_rec_sys/index.html:16
+msgid "indexHTML_description"
+msgstr "The UDC Recommender service is based on the OntoMathPro ontology developed by the research group of Kazan Federal University (Russia)."
+
+#: udc_rec_sys/templates/udc_rec_sys/index.html:20
+msgid "indexHTML_article_upload_button"
+msgstr "Try the service"
+
+#: udc_rec_sys/templates/udc_rec_sys/userstash.html:6
+msgid "userstashHTML_title"
+msgstr "Uploaded articles"
+
+#: udc_rec_sys/templates/udc_rec_sys/userstash.html:12
+msgid "userstashHTML_recommended_udc"
+msgstr "Recommended UDC"
+
+#: udc_rec_sys/templates/udc_rec_sys/userstash.html:13
+msgid "userstashHTML_potential_udc"
+msgstr "Potential UDC"
+
+#: udc_rec_sys/templates/udc_rec_sys/userstash.html:26
+msgid "userstashHTML_if_empty_message"
+msgstr "Empty list of articles"
+
+#: udc_rec_sys/views.py:17
+msgid "ursv_index_title"
+msgstr "UDC Recommender"
+
+#: udc_rec_sys/views.py:40
+msgid "ursv_article_upload_title"
+msgstr "Article uploading"

@@ -1,0 +1,77 @@
+{% extends 'udc_rec_sys/base.html'%}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block css %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <h4 class="mt-3 mb-3">{% trans 'profileHTML_title' %}</h4>
+            <form action="{% url 'users:profile' %}" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.first_name.id_for_label}}">
+                                {% trans 'profileHTML_profile_first_name' %}</label>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.last_name.id_for_label}}">
+                                {% trans 'profileHTML_profile_last_name' %}</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.username.id_for_label}}">
+                                {% trans 'profileHTML_profile_username' %}</label>
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.email.id_for_label}}">
+                                {% trans 'profileHTML_profile_email' %}</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.company.id_for_label}}">
+                                {% trans 'profileHTML_profile_company' %}</label>
+                            {{ form.company }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.position.id_for_label}}">
+                                {% trans 'profileHTML_profile_position' %}</label>
+                            {{ form.position }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-12" style="margin-top: 33px;">
+                        <input class="btn btn-info btn-block" type="submit"
+                               value="{% trans 'profileHTML_profile_save_button' %}">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        {% include 'udc_rec_sys/userstash.html' %}
+    </div>
+</div>
+{% endblock %}

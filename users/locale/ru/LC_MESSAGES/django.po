@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-18 18:07+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: users/forms.py:12
+msgid "uf_login_form_placeholder_username"
+msgstr "Введите имя пользователя"
+
+#: users/forms.py:15
+msgid "uf_login_form_placeholder_password"
+msgstr "Введите пароль"
+
+#: users/forms.py:30
+msgid "uf_registration_form_placeholder_first_name"
+msgstr "Введите имя"
+
+#: users/forms.py:33
+msgid "uf_registration_form_placeholder_last_name"
+msgstr "Введите фамилию"
+
+#: users/forms.py:36
+msgid "uf_registration_form_placeholder_username"
+msgstr "Введите имя пользователя"
+
+#: users/forms.py:39
+msgid "uf_registration_form_placeholder_email"
+msgstr "Введите адрес эл.почты"
+
+#: users/forms.py:42
+msgid "uf_registration_form_placeholder_password1"
+msgstr "Введите пароль"
+
+#: users/forms.py:45
+msgid "uf_registration_form_placeholder_password2"
+msgstr "Повторите пароль"
+
+#: users/templates/users/login.html:27
+msgid "loginHTML_header"
+msgstr "Авторизоваться"
+
+#: users/templates/users/login.html:33
+msgid "loginHTML_username"
+msgstr "Имя пользователя"
+
+#: users/templates/users/login.html:37
+msgid "loginHTML_password"
+msgstr "Пароль"
+
+#: users/templates/users/login.html:41
+msgid "loginHTML_forgot_password"
+msgstr "Забыли пароль?"
+
+#: users/templates/users/login.html:42
+msgid "loginHTML_login_button"
+msgstr "Войти"
+
+#: users/templates/users/login.html:47
+msgid "loginHTML_create_account_message"
+msgstr "Нет аккаунта? Зарегистрируйтесь!"
+
+#: users/templates/users/profile.html:14
+msgid "profileHTML_title"
+msgstr "Профиль"
+
+#: users/templates/users/profile.html:21
+msgid "profileHTML_profile_first_name"
+msgstr "Имя"
+
+#: users/templates/users/profile.html:28
+msgid "profileHTML_profile_last_name"
+msgstr "Фамилия"
+
+#: users/templates/users/profile.html:36
+msgid "profileHTML_profile_username"
+msgstr "Имя пользователя"
+
+#: users/templates/users/profile.html:41
+msgid "profileHTML_profile_email"
+msgstr "Адрес эл. почты"
+
+#: users/templates/users/profile.html:49
+msgid "profileHTML_profile_company"
+msgstr "Место работы"
+
+#: users/templates/users/profile.html:56
+msgid "profileHTML_profile_position"
+msgstr "Должность"
+
+#: users/templates/users/profile.html:64
+msgid "profileHTML_profile_save_button"
+msgstr "Сохранить"
+
+#: users/templates/users/register.html:18
+msgid "registerHTML_header"
+msgstr "Регистрация"
+
+#: users/templates/users/register.html:26
+msgid "registerHTML_first_name"
+msgstr "Имя"
+
+#: users/templates/users/register.html:32
+msgid "registerHTML_last_name"
+msgstr "Фамилия"
+
+#: users/templates/users/register.html:39
+msgid "registerHTML_username"
+msgstr "Имя пользователя"
+
+#: users/templates/users/register.html:43
+msgid "registerHTML_email"
+msgstr "Адрес эл.почты"
+
+#: users/templates/users/register.html:50
+msgid "registerHTML_password"
+msgstr "Пароль"
+
+#: users/templates/users/register.html:56
+msgid "registerHTML_password2"
+msgstr "Повторите пароль"
+
+#: users/templates/users/register.html:62
+msgid "registerHTML_create_button"
+msgstr "Зарегистрироваться"
+
+#: users/templates/users/register.html:67
+msgid "registerHTML_already_have_account"
+msgstr "Уже есть аккаунт? Авторизуйтесь!"
+
+#: users/views.py:26
+msgid "uv_login_title"
+msgstr "Авторизация"
+
+#: users/views.py:37
+msgid "uv_register_success_msg"
+msgstr "Вы успешно зарегистрированы!"
+
+#: users/views.py:42
+msgid "uv_register_title"
+msgstr "Регистрация"
+
+#: users/views.py:59
+msgid "uv_profile_title"
+msgstr "Профиль"

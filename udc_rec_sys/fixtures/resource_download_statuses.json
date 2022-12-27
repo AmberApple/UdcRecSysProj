@@ -1,0 +1,1 @@
+[{"model": "udc_rec_sys.resourcedownloadstatus", "pk": 1, "fields": {"name_ru": "Отключен", "name_en": "Disabled"}}, {"model": "udc_rec_sys.resourcedownloadstatus", "pk": 2, "fields": {"name_ru": "Недоступен", "name_en": "Offline"}}, {"model": "udc_rec_sys.resourcedownloadstatus", "pk": 3, "fields": {"name_ru": "Доступен", "name_en": "Online"}}]

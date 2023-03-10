@@ -1,0 +1,49 @@
+services:
+  redis_udc_rs:
+    container_name: redis_prod
+    image: redis:7.0.9-bullseye
+    restart: always
+    ports:
+      - 6379:6379
+
+  nginx:
+    container_name: nginx_prod
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/app/app_udc_rs/static
+      - media_volume:/home/app/app_udc_rs/media
+    depends_on:
+      - app_udc_rs
+
+  app_udc_rs:
+    container_name: udc_prod
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    volumes:
+      - static_volume:/home/app/app_udc_rs/static
+      - media_volume:/home/app/app_udc_rs/media
+    ports:
+      - 8000:8000
+      - 5566:5566
+    expose:
+      - 8000
+    command: >
+      sh -c "celery -A udcrec worker -l INFO -n workerMain -Q celery --concurrency=4 & 
+      celery -A udcrec worker -l INFO -n workerAC -Q assign_code --concurrency=1 &
+      celery -A udcrec flower --loglevel=info --port=5566 & 
+      gunicorn udcrec.wsgi:application --bind 0.0.0.0:8000"
+    env_file:
+      - ./.env.prod
+
+volumes:
+  static_volume:
+  media_volume:
+
+
+
+
+

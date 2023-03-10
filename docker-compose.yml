@@ -1,0 +1,32 @@
+services:
+  redis_udc_rs:
+    container_name: redis_dev
+    image: redis:7.0.9-bullseye
+    restart: always
+    ports:
+      - 6379:6379
+
+  app_udc_rs:
+    container_name: udc_dev
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8000:8000
+      - 5566:5566
+    command: >
+      sh -c "celery -A udcrec worker -l INFO -n workerMain -Q celery --concurrency=4 & 
+      celery -A udcrec worker -l INFO -n workerAC -Q assign_code --concurrency=1 &
+      celery -A udcrec flower --loglevel=info --port=5566 & 
+      python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - ./.env.dev
+
+
+
+
+
+

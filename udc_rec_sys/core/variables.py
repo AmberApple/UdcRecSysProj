@@ -16,7 +16,11 @@ path_to_udc_maps = os.path.join(URS_CORE_ROOT, "service/data/udc_map/")
 top_result_counter = 3
 ontology_main_ver_ontomathpro = '1.12.16'
 ontology_main_id_ontomathpro = 1
-tesseract_ocr_slice_size = 10
+tesseract_ocr_slice_size = int(os.environ.get('TESS_OCR_SLICE_SIZE', default=10))
+tesseract_ocr_dpi = int(os.environ.get('TESS_OCR_DPI', default=300))
+coeff_mistake_lev = float(os.environ.get('COEFF_MISTAKE_LEV', default=0.85))
+pm2_morph_analyzer_lang = str(os.environ.get('PM2_MORTH_ANALYZER_LANG', default='ru'))
+
 default_expert_class_coefficients_dict = {
     "Value": 1,
     "Geometric object": 1,

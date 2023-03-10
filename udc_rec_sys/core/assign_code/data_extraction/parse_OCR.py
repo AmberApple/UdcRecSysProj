@@ -8,6 +8,7 @@ from udcrec.settings import MEDIA_ROOT
 from udc_rec_sys.core.variables import urs_swap_folder as swap_path
 from udc_rec_sys.core.variables import tesseract_cmd_path
 from udc_rec_sys.core.variables import tesseract_ocr_slice_size as slice_size
+from udc_rec_sys.core.variables import tesseract_ocr_dpi as tess_dpi
 
 
 pytesseract.pytesseract.tesseract_cmd = tesseract_cmd_path
@@ -28,7 +29,7 @@ def get_file_text_with_ocr(*, path_to_pdf: str) -> str:
         os.mkdir(swap_path)
 
     for file_page in range(1, pages_in_pdf + 1, slice_size):
-        pdf_slice = convert_from_path(pdf_path=path_to_pdf, dpi=300, first_page=file_page,
+        pdf_slice = convert_from_path(pdf_path=path_to_pdf, dpi=tess_dpi, first_page=file_page,
                                       last_page=min(file_page + slice_size - 1, pages_in_pdf))
         image_counter = 1
         jpeg_for_delete = []

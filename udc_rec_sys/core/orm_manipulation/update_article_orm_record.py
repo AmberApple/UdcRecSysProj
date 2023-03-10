@@ -1,5 +1,3 @@
-import os
-
 from udc_rec_sys.models import Article, ArticleStatus
 
 from udc_rec_sys.core.variables import top_result_counter

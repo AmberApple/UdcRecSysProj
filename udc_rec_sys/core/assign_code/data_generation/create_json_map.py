@@ -2,10 +2,11 @@ import math
 
 from udc_rec_sys.core.orm_manipulation.get_orm_data import get_main_ontomathpro_data
 from udc_rec_sys.core.assign_code.data_preprocessing.text_morph import get_morph_text
+from udc_rec_sys.core.variables import coeff_mistake_lev as cm_lev
 
 import Levenshtein
 # Coeff for Levenshtein distance
-coefficient_mistake_lev = 0.85
+coefficient_mistake_lev = cm_lev
 
 
 def get_count_occurrences_of_term(*, term: str, text: str) -> int:

@@ -1,5 +1,4 @@
 from django import forms
-from django.utils.translation import ugettext as _
 
 from udc_rec_sys.models import Article
 

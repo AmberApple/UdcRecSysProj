@@ -9,6 +9,7 @@ docker-compose -f docker-compose.yml up -d --build
 
 docker exec -it udc_dev bash
 
+
 python manage.py flush
 python manage.py makemigrations
 python manage.py migrate

@@ -1,6 +1,9 @@
+import os
+
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.utils.translation import ugettext as _
 
 from udc_rec_sys.forms import ArticleUploadForm
@@ -24,17 +27,23 @@ def article_upload(request):
     if request.method == 'POST':
         form = ArticleUploadForm(data=request.POST, files=request.FILES)
         if form.is_valid():
-            resourse_id = ResourceDownload(id=1)  # User Download
-            status = ArticleStatus(id=1)  # Uploaded
-            article = Article(file=request.FILES['file'], file_name=request.FILES['file'].name,
+            # check file format
+            file_name, file_ext = os.path.splitext(request.FILES['file'].name)
+            if file_ext != '.pdf':
+                messages.info(request, 'Format Error: not a PDF or corrupted')
+            else:
+            #сделать ДЕВ БД
+                resourse_id = ResourceDownload(id=1)  # User Download
+                status = ArticleStatus(id=1)  # Uploaded
+                article = Article(file=request.FILES['file'], file_name=request.FILES['file'].name,
                               owner=request.user, resource=resourse_id, status=status)
-            article.save()
-            UserStash.objects.create(user=request.user, article=article)
+                article.save()
+                UserStash.objects.create(user=request.user, article=article)
 
-            # start task
-            #assign_udc_code.delay(pdf_file=str(article.file))
-            assign_udc_code.apply_async(args=[str(article.file)], queue='assign_code')
-            return HttpResponseRedirect(reverse('users:profile'))
+                # start task
+                #assign_udc_code.delay(pdf_file=str(article.file))
+                assign_udc_code.apply_async(args=[str(article.file)], queue='assign_code')
+                return HttpResponseRedirect(reverse('users:profile'))
     else:
         form = ArticleUploadForm()
     context = {

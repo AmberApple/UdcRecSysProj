@@ -111,8 +111,8 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/users/login/'
 
 # REDIS related settings
-REDIS_HOST = str(os.environ.get("REDIS_HOST"))
-REDIS_PORT = str(os.environ.get("REDIS_PORT"))
+REDIS_HOST = str(os.environ.get("REDIS_HOST", default='0.0.0.0'))
+REDIS_PORT = str(os.environ.get("REDIS_PORT", default='6379'))
 
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
@@ -129,23 +129,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #DEFAULT_FILE_STORAGE = 'django_hashedfilenamestorage.storage.HashedFilenameFileSystemStorage'
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-#SECRET_KEY='test_key'
+SECRET_KEY = os.environ.get("SECRET_KEY", default='asdlaskdjlk@%9324ASD124KLNlknwqe*^*&njks')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", default=1)))
 
-ALLOWED_HOSTS = str(os.environ.get("DJANGO_ALLOWED_HOSTS")).split(" ")
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = str(os.environ.get("DJANGO_ALLOWED_HOSTS", default='127.0.0.1 localhost [::1]')).split(" ")
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
     'http://127.0.0.1:8000',
-    #'http://localhost:8081'
 ]
 
+DB_NAME = str(os.environ.get("DATABASE_NAME", default='dev_db.sqlite3'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, DB_NAME),
     }
 }
 
@@ -153,33 +151,49 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-#DEBUG=True
-if DEBUG:
-    STATIC_DIR = [os.path.join(BASE_DIR, "static_dev"), ]
-    INSTALLED_APPS.append('static_autocollect')
-
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_DIR = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-log_level = str(os.environ.get('LOG_LEVEL', default='DEBUG'))
-log_file = 'src/' + str(os.environ.get('LOG_FILE', default='debug.log'))
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': log_level,
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, log_file),
+if not DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'src/log.log'),
+            },
         },
-    },
-    'loggers': {
-        'udc_rec_sys': {
-            'handlers': ['file'],
-            'level': log_level,
-            'propagate': True,
+        'loggers': {
+            'udc_rec_sys': {
+                'handlers': ['file'],
+                'level': 'INFO',
+                'propagate': True,
+            },
         },
-    },
-}
+    }
+else:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'src/debug.log'),
+            },
+        },
+        'loggers': {
+            'udc_rec_sys': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }

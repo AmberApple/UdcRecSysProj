@@ -51,25 +51,21 @@ def assign_udc_code(pdf_file: str) -> None:
     try:
         # update record info
         article_record = Article.objects.get(file=pdf_file)
-        article_record.status = ArticleStatus(id=2)  # Processing
+        article_record.status = ArticleStatus(id=2)  # Status Processing
         article_record.save()
-
-        # check file format
-        check_pdf_format = pdf_file.split('/')[-1].split('.')[-1]
-        if check_pdf_format != 'pdf':
-            raise NameError('Not PDF')
 
         # start task
         start_assign_code(path_to_pdf_file=pdf_file)
         msg = f'{timezone.now()} | User {article_record.owner.username} | Article {pdf_file} | SUCCESS'
-        logger.debug(msg)
+        logger.info(msg)
         os.remove(os.path.join(MEDIA_ROOT, pdf_file))
     except Exception as exc:
         msg = f'{timezone.now()} | User {article_record.owner.username} | Article {pdf_file} | {str(exc)}'
-        logger.debug(msg)
+        logger.info(msg)
         os.remove(os.path.join(MEDIA_ROOT, pdf_file))
+
         # update record info
         article_record = Article.objects.get(file=pdf_file)
-        article_record.status = ArticleStatus(id=4)  # Error
+        article_record.status = ArticleStatus(id=4)  # Status Error
         article_record.save()
 

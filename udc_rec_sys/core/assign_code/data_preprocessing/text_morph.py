@@ -1,7 +1,7 @@
 import pymorphy2
 
-from udc_rec_sys.core.variables import pm2_morph_analyzer_lang as pm2_lang
 
+pm2_lang = 'ru'
 lang_morph = pymorphy2.MorphAnalyzer(lang=pm2_lang)
 
 

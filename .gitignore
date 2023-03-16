@@ -1,10 +1,10 @@
 /media/articles_files/
+/media/extraction_swap/
 /src/
 /udc_rec_sys/core/test.py
 /users/tests.py
 /udc_rec_sys/tests.py
-/dev_db.sqlite3
-/TODO.txt
+/db.sqlite3
 /.idea
 /.env.prod
 /docker-compose.prod.yml

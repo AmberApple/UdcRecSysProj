@@ -1,0 +1,2 @@
+upload_data4celery.zip -> udc_rec_sys/core/service/
+urs_fixtures.zip -> udc_rec_sys/fixtures/

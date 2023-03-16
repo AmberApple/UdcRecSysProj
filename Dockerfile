@@ -7,8 +7,8 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install tesseract-ocr tesseract-ocr-rus -y \
-    && apt-get install poppler-utils -y
+    && apt-get install netcat postgresql gcc python3-dev musl-dev -y \
+    && apt-get install tesseract-ocr tesseract-ocr-rus poppler-utils -y
 
 # Cache version || docker build --no-cache=True
 RUN pip install --upgrade pip

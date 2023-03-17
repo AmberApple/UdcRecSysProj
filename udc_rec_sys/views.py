@@ -32,7 +32,6 @@ def article_upload(request):
             if file_ext != '.pdf':
                 messages.info(request, 'Format Error: not a PDF or corrupted')
             else:
-            #сделать ДЕВ БД
                 resourse_id = ResourceDownload(id=1)  # User Download
                 status = ArticleStatus(id=1)  # Uploaded
                 article = Article(file=request.FILES['file'], file_name=request.FILES['file'].name,

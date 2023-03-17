@@ -2,14 +2,14 @@
 idea
 .DS_Store
 
-!*media/articles_files/.gitkeep
 media/articles_files/*
-!*media/extraction_swap/.gitkeep
+!*media/articles_files/.gitkeep
 media/extraction_swap/*
-!*udc_rec_sys/fixtures/.gitkeep
+!*media/extraction_swap/.gitkeep
 udc_rec_sys/fixtures/*
+!*udc_rec_sys/fixtures/.gitkeep
+src/*.log
 !*src/.gitkeep
-src/*
 
 /udc_rec_sys/core/test.py
 /users/tests.py

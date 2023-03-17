@@ -2,18 +2,22 @@
 idea
 .DS_Store
 
-/media/articles_files/*
-/media/extraction_swap/*
-/src/*.log
-/udc_rec_sys/fixtures/*
+!*media/articles_files/.gitkeep
+media/articles_files/*
+!*media/extraction_swap/.gitkeep
+media/extraction_swap/*
+!*udc_rec_sys/fixtures/.gitkeep
+udc_rec_sys/fixtures/*
+!*src/.gitkeep
+src/*
 
 /udc_rec_sys/core/test.py
 /users/tests.py
 /udc_rec_sys/tests.py
 
-/db.sqlite3
+db.sqlite3
 
-/.env.prod
-/docker-compose.prod.yml
-/Dockerfile.prod
-/entrypoint.prod.sh
+.env.prod
+docker-compose.prod.yml
+Dockerfile.prod
+entrypoint.prod.sh

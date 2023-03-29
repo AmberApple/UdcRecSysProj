@@ -1,0 +1,56 @@
+# Изменить поля CHANGE_ME в файлах .env.prod и .env.prod.db
+
+services:
+  redis_udc_rs:
+    container_name: redis_prod
+    image: redis:7.0.9-alpine
+    restart: always
+
+  db_udc_rs:
+    container_name: postgres_prod
+    image: postgres:12.0-alpine
+    volumes:
+      - urs_postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+
+  nginx:
+    container_name: nginx_prod
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/app/app_udc_rs/static
+      - media_volume:/home/app/app_udc_rs/media
+    depends_on:
+      - app_udc_rs
+
+  app_udc_rs:
+    container_name: udc_prod
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    volumes:
+      - static_volume:/home/app/app_udc_rs/static
+      - media_volume:/home/app/app_udc_rs/media
+    expose:
+      - 8000
+    command: >
+      sh -c "celery -A udcrec worker -l INFO -n workerMain -Q celery --concurrency=4 & 
+      celery -A udcrec worker -l INFO -n workerAC -Q assign_code --concurrency=1 &
+      gunicorn udcrec.wsgi:application --bind 0.0.0.0:8000"
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db_udc_rs
+
+volumes:
+  urs_postgres_data:
+  static_volume:
+  media_volume:
+
+
+
+
+

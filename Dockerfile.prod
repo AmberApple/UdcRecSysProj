@@ -1,0 +1,45 @@
+FROM python:3.8.16-buster as builder
+
+WORKDIR /usr/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install postgresql gcc python3-dev musl-dev -y
+
+COPY . .
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+FROM python:3.8.16-buster
+
+RUN mkdir -p /home/app
+
+# !Change! password = app_PASSWORD
+RUN groupadd app
+RUN useradd -m -g app app -p app_PASSWORD
+RUN usermod -aG app app
+
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/app_udc_rs
+RUN mkdir $APP_HOME
+
+WORKDIR $APP_HOME
+
+RUN apt-get update \
+    && apt-get install netcat tesseract-ocr tesseract-ocr-rus poppler-utils -y
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --no-cache /wheels/*
+
+COPY ./entrypoint.prod.sh $APP_HOME
+COPY . $APP_HOME
+RUN chown -R app:app $APP_HOME
+
+USER app
+
+ENTRYPOINT ["/home/app/app_udc_rs/entrypoint.prod.sh"]

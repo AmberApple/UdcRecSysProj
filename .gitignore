@@ -17,8 +17,4 @@ src/*.log
 
 db.sqlite3
 
-.env.prod
-.env.prod.db
-docker-compose.prod.yml
-Dockerfile.prod
-entrypoint.prod.sh
+
